@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_basquet_basquet,basquet.basquet,model_basquet_basquet,base.group_user,1,1,1,1
+access_basquet_equip,access.basquet.equip,model_basquet_equip,base.group_user,1,1,1,1
+access_basquet_jugador,access.basquet.jugador,model_basquet_jugador,base.group_user,1,1,1,1
+access_basquet_pavello,access.basquet.pavello,model_basquet_pavello,base.group_user,1,1,1,1
