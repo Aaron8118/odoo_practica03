@@ -151,9 +151,12 @@ class Tiquet(models.Model):
         )
 
         return [(6, 0, (nominal | no_reemborsable).ids)]
-
+        
     etiquetes_ids = fields.Many2many(
         'venda_entrades_segures.etiqueta',
+        'tiquet_etiqueta_rel',
+        'tiquet_id',
+        'etiqueta_id',
         string='Etiquetes',
         default=_get_default_tags
     )
