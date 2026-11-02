@@ -49,10 +49,10 @@ class BasquetJugador(models.Model):
     )
 
     estadi_nom = fields.Char(
-        string='Nom de l estadi',
-        related='equip_id.estadi_id.name',
+	string='Nom de l estadi',
         store=True,
-        readonly=True
+        readonly=True,
+	related='estadi_id.name'
     )
 
     es_capita = fields.Boolean(
