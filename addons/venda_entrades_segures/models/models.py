@@ -130,7 +130,7 @@ class Tiquet(models.Model):
                 nom = escape(record.comprador_id.name)
 
                 record.clausules_legals = (
-                    f"<p>Comprador: <strong>{nom}</strong></p>"
+                    f"<p>Comprador: <b>{nom}</b></p>"
                     "<p>Entrada nominal i intransferible.</p>"
                     "<p>Prohibida la revenda.</p>"
                     "<p>No es permet el reemborsament.</p>"
