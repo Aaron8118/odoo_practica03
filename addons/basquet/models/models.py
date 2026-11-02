@@ -52,7 +52,7 @@ class BasquetJugador(models.Model):
 	string='Nom de l estadi',
         store=True,
         readonly=True,
-	related='estadi_id.name'
+	related='equip_id.estadi_id.name'
     )
 
     es_capita = fields.Boolean(
