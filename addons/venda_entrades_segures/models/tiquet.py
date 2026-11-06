@@ -7,9 +7,6 @@ class Tiquet(models.Model):
     _name = 'venda_entrades_segures.tiquet'
     _description = 'Tiquet nominal'
 
-    # -------------------------------------------------
-    # CAMPS MANY2ONE
-    # -------------------------------------------------
 
     comprador_id = fields.Many2one(
         'res.partner',
@@ -23,9 +20,6 @@ class Tiquet(models.Model):
         required=True
     )
 
-    # -------------------------------------------------
-    # PREU FINAL - COMPUTED
-    # -------------------------------------------------
 
     preu_final = fields.Float(
         string='Preu final',
@@ -43,9 +37,7 @@ class Tiquet(models.Model):
             else:
                 record.preu_final = 0.0
 
-    # -------------------------------------------------
-    # CODI DE SEGURETAT - COMPUTED
-    # -------------------------------------------------
+
 
     codi_seguretat = fields.Char(
         string='Codi de seguretat',
@@ -68,9 +60,6 @@ class Tiquet(models.Model):
                 f"{nom}-{esdeveniment}-{tiquet}"
             )
 
-    # -------------------------------------------------
-    # DATA LIMIT D'ACCÉS - COMPUTED
-    # -------------------------------------------------
 
     data_limit_acces = fields.Datetime(
         string='Data límit d\'accés',
@@ -89,9 +78,7 @@ class Tiquet(models.Model):
             else:
                 record.data_limit_acces = False
 
-    # -------------------------------------------------
-    # FOTO DEL COMPRADOR - COMPUTED
-    # -------------------------------------------------
+
 
     foto_comprador = fields.Image(
         string='Foto del comprador',
@@ -107,9 +94,7 @@ class Tiquet(models.Model):
                 else False
             )
 
-    # -------------------------------------------------
-    # CLAUSULES LEGALS - COMPUTED
-    # -------------------------------------------------
+
 
     clausules_legals = fields.Html(
         string='Clàusules legals',
@@ -133,9 +118,6 @@ class Tiquet(models.Model):
                 "</ul>"
             )
 
-    # -------------------------------------------------
-    # ETIQUETES - MANY2MANY AMB VALOR PER DEFECTE
-    # -------------------------------------------------
 
     etiquetes_ids = fields.Many2many(
         'venda_entrades_segures.etiqueta',
@@ -160,9 +142,7 @@ class Tiquet(models.Model):
             ])
         ]
 
-    # -------------------------------------------------
-    # ENTRADES RELACIONADES - MANY2MANY COMPUTED
-    # -------------------------------------------------
+
 
     entrades_relacionades_ids = fields.Many2many(
         'venda_entrades_segures.tiquet',
