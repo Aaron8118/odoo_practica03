@@ -6,6 +6,7 @@
     'depends': ['base'],
     'data': [
         'security/ir.model.access.csv',
+        'data/etiquetes.xml',
     ],
     'installable': True,
     'application': True,
