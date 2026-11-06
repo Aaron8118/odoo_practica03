@@ -5,11 +5,11 @@
         <field name="name">esdeveniment.tree</field>
         <field name="model">venda_entrades_segures.esdeveniment</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name"/>
                 <field name="preu_base"/>
                 <field name="data_inici"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -28,11 +28,11 @@
                     <notebook>
                         <page string="Entrades">
                             <field name="tiquet_ids">
-                                <tree>
+                                <list>
                                     <field name="comprador_id"/>
                                     <field name="preu_final"/>
                                     <field name="codi_seguretat"/>
-                                </tree>
+                                </list>
                             </field>
                         </page>
                     </notebook>
@@ -45,7 +45,7 @@
     <record id="action_esdeveniment" model="ir.actions.act_window">
         <field name="name">Esdeveniments</field>
         <field name="res_model">venda_entrades_segures.esdeveniment</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
     <menuitem id="menu_entrades_root"
