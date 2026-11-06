@@ -35,9 +35,13 @@ class Etiqueta(models.Model):
 
 
 class Tiquet(models.Model):
+class Tiquet(models.Model):
     _name = 'venda_entrades_segures.tiquet'
     _description = 'Tiquet de venda'
 
+    name = fields.Char(
+        string='Nom del tiquet'
+    )
 
     comprador_id = fields.Many2one(
         'res.partner',
