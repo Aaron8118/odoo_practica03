@@ -151,25 +151,22 @@ class Tiquet(models.Model):
         string='Entrades relacionades',
         compute='_compute_entrades_relacionades'
     )
-
+    
     @api.depends(
         'comprador_id',
         'esdeveniment_id'
     )
     def _compute_entrades_relacionades(self):
         for record in self:
-
             if not record.id:
                 record.entrades_relacionades_ids = False
                 continue
-
+    
             domain = [
                 ('id', '!=', record.id),
                 '|',
                 ('esdeveniment_id', '=', record.esdeveniment_id.id),
                 ('comprador_id', '=', record.comprador_id.id)
             ]
-
-            record.entrades_relacionades_ids = self.search(
-                domain
-            )
+    
+            record.entrades_relacionades_ids = self.search(domain)
