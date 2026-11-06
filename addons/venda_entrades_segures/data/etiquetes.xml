@@ -1,9 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="etiqueta_nominal" model="venda_entrades_segures.etiqueta">
+
+    <record id="etiqueta_nominal"
+            model="venda_entrades_segures.etiqueta">
         <field name="name">Nominal</field>
+        <field name="descripcio">
+            Entrada associada a un comprador concret.
+        </field>
     </record>
 
-    <record id="etiqueta_no_reemborsable" model="venda_entrades_segures.etiqueta">
+    <record id="etiqueta_no_reemborsable"
+            model="venda_entrades_segures.etiqueta">
         <field name="name">No Reemborsable</field>
+        <field name="descripcio">
+            Entrada sense possibilitat de reemborsament.
+        </field>
     </record>
+
 </odoo>
