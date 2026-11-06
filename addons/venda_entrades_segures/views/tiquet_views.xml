@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- VISTA TREE -->
+
+    <record id="view_tiquet_tree" model="ir.ui.view">
+        <field name="name">tiquet.tree</field>
+        <field name="model">venda_entrades_segures.tiquet</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="comprador_id"/>
+                <field name="esdeveniment_id"/>
+                <field name="preu_final"/>
+                <field name="codi_seguretat"/>
+                <field name="data_limit_acces"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- VISTA FORM -->
+
+    <record id="view_tiquet_form" model="ir.ui.view">
+        <field name="name">tiquet.form</field>
+        <field name="model">venda_entrades_segures.tiquet</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+
+                    <group string="Informació del comprador">
+                        <field name="comprador_id"/>
+                        <field name="foto_comprador"
+                               widget="image"
+                               class="oe_avatar"/>
+                    </group>
+
+                    <group string="Informació de l'entrada">
+                        <field name="esdeveniment_id"/>
+                        <field name="preu_final"/>
+                        <field name="codi_seguretat"/>
+                        <field name="data_limit_acces"/>
+                    </group>
+
+                    <group string="Etiquetes">
+                        <field name="etiquetes_ids"
+                               widget="many2many_tags"/>
+                    </group>
+
+                    <notebook>
+
+                        <page string="Clàusules legals">
+                            <field name="clausules_legals"
+                                   widget="html"/>
+                        </page>
+
+                        <page string="Entrades relacionades">
+                            <field name="entrades_relacionades_ids">
+                                <tree>
+                                    <field name="comprador_id"/>
+                                    <field name="esdeveniment_id"/>
+                                    <field name="codi_seguretat"/>
+                                    <field name="preu_final"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ACCIÓ -->
+
+    <record id="action_tiquet" model="ir.actions.act_window">
+        <field name="name">Tiquets</field>
+        <field name="res_model">venda_entrades_segures.tiquet</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- MENÚ -->
+
+    <menuitem id="menu_tiquets"
+              name="Tiquets"
+              parent="menu_entrades_root"
+              action="action_tiquet"/>
+
+</odoo>
