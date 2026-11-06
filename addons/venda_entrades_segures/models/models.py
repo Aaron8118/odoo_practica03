@@ -79,9 +79,8 @@ class Tiquet(models.Model):
         for record in self:
             if record.comprador_id and record.esdeveniment_id:
                 nom = record.comprador_id.name.upper().replace(' ', '-')
-    
                 record.codi_seguretat = (
-                    f"{nom}-{record.esdeveniment_id.id}"
+                    f"{nom}-{record.esdeveniment_id.id}-{record.id or 0}"
                 )
             else:
                 record.codi_seguretat = False
@@ -124,18 +123,18 @@ class Tiquet(models.Model):
         compute='_compute_clausules_legals',
         store=True
     )
-
+    
     @api.depends('comprador_id.name')
     def _compute_clausules_legals(self):
         for record in self:
             if record.comprador_id:
-                nom = escape(record.comprador_id.name)
+                nom = record.comprador_id.name
     
                 record.clausules_legals = (
-                    f"<p>Comprador: <strong>{nom}</strong></p>"
-                    "<p>Entrada nominal i intransferible.</p>"
-                    "<p>Prohibida la revenda.</p>"
-                    "<p>No es permet el reemborsament.</p>"
+                    '<p>Comprador: <strong>' + nom + '</strong></p>'
+                    '<p>Entrada nominal i intransferible.</p>'
+                    '<p>Prohibida la revenda.</p>'
+                    '<p>No es permet el reemborsament.</p>'
                 )
             else:
                 record.clausules_legals = False
