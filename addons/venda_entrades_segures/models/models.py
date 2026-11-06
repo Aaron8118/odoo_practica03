@@ -73,15 +73,15 @@ class Tiquet(models.Model):
         compute='_compute_codi_seguretat',
         store=True
     )
-
+    
     @api.depends('comprador_id.name', 'esdeveniment_id')
     def _compute_codi_seguretat(self):
         for record in self:
             if record.comprador_id and record.esdeveniment_id:
                 nom = record.comprador_id.name.upper().replace(' ', '-')
-
+    
                 record.codi_seguretat = (
-                    f"{nom}-{record.esdeveniment_id.id}-{record.id or 0}"
+                    f"{nom}-{record.esdeveniment_id.id}"
                 )
             else:
                 record.codi_seguretat = False
@@ -92,14 +92,16 @@ class Tiquet(models.Model):
         compute='_compute_data_limit_acces',
         store=True
     )
-
+    
     @api.depends('esdeveniment_id.data_inici')
     def _compute_data_limit_acces(self):
         for record in self:
             if record.esdeveniment_id and record.esdeveniment_id.data_inici:
-                record.data_limit_acces = (
+                data_inici = fields.Datetime.to_datetime(
                     record.esdeveniment_id.data_inici
-                    - timedelta(hours=2)
+                )
+                record.data_limit_acces = (
+                    data_inici - timedelta(hours=2)
                 )
             else:
                 record.data_limit_acces = False
@@ -128,9 +130,9 @@ class Tiquet(models.Model):
         for record in self:
             if record.comprador_id:
                 nom = escape(record.comprador_id.name)
-
+    
                 record.clausules_legals = (
-                    f"<p>Comprador: <b>{nom}</b></p>"
+                    f"<p>Comprador: <strong>{nom}</strong></p>"
                     "<p>Entrada nominal i intransferible.</p>"
                     "<p>Prohibida la revenda.</p>"
                     "<p>No es permet el reemborsament.</p>"
@@ -140,16 +142,14 @@ class Tiquet(models.Model):
 
     @api.model
     def _get_default_tags(self):
-        nominal = self.env['venda_entrades_segures.etiqueta'].search(
-            [('name', '=', 'Nominal')],
-            limit=1
+        nominal = self.env.ref(
+            'venda_entrades_segures.etiqueta_nominal'
         )
-
-        no_reemborsable = self.env['venda_entrades_segures.etiqueta'].search(
-            [('name', '=', 'No Reemborsable')],
-            limit=1
+    
+        no_reemborsable = self.env.ref(
+            'venda_entrades_segures.etiqueta_no_reemborsable'
         )
-
+    
         return [(6, 0, (nominal | no_reemborsable).ids)]
         
     etiquetes_ids = fields.Many2many(
