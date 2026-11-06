@@ -18,10 +18,9 @@ class Esdeveniment(models.Model):
         string='Preu base',
         required=True
     )
-
+    
     data_inici = fields.Datetime(
-        string='Data d inici',
-        required=True
+        string='Data d inici'
     )
 
 
