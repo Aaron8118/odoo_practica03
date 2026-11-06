@@ -119,10 +119,13 @@ class Tiquet(models.Model):
 
 
     etiquetes_ids = fields.Many2many(
-        'venda_entrades_segures.etiqueta',
-        string='Etiquetes',
-        default=lambda self: self._get_default_tags()
-    )
+    'venda_entrades_segures.etiqueta',
+    'tiquet_etiqueta_rel',
+    'tiquet_id',
+    'etiqueta_id',
+    string='Etiquetes',
+    default=lambda self: self._get_default_tags()
+)
 
     @api.model
     def _get_default_tags(self):
