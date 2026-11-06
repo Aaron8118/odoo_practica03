@@ -47,15 +47,14 @@ class Tiquet(models.Model):
 
     @api.depends(
         'comprador_id.name',
-        'esdeveniment_id',
-        'id'
+        'esdeveniment_id'
     )
     def _compute_codi_seguretat(self):
         for record in self:
             nom = record.comprador_id.name or 'SENSE_NOM'
             esdeveniment = record.esdeveniment_id.id or 0
             tiquet = record.id or 0
-
+    
             record.codi_seguretat = (
                 f"{nom}-{esdeveniment}-{tiquet}"
             )
