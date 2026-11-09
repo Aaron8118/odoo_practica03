@@ -35,13 +35,10 @@ class Curs(models.Model):
         string='Inscripcions'
     )
 
-    _sql_constraints = [
-        (
-            'capacitat_maxima_positiva',
-            'CHECK(capacitat_maxima > 0)',
-            'La capacitat màxima ha de ser superior a zero.'
-        ),
-    ]
+    _capacitat_positiva = models.Constraint(
+        'CHECK(capacitat_maxima > 0)',
+        'La capacitat màxima ha de ser superior a zero.'
+    )
 
     @api.constrains('data_inici', 'data_fi')
     def _check_dates(self):
