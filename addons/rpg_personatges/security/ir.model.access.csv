@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_rpg_personatges_rpg_personatges,rpg_personatges.rpg_personatges,model_rpg_personatges_rpg_personatges,base.group_user,1,1,1,1
+access_rpg_personatge,rpg.personatge,model_rpg_personatge,base.group_user,1,1,1,1
+access_rpg_habilitat,rpg.habilitat,model_rpg_habilitat,base.group_user,1,1,1,1
+access_rpg_classe,rpg.classe,model_rpg_classe,base.group_user,1,1,1,1
+access_rpg_avaluador,rpg.avaluador,model_rpg_avaluador,base.group_user,1,1,1,1
