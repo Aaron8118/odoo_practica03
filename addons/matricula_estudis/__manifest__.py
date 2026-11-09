@@ -6,9 +6,6 @@
     'summary': 'Gestió de matrícules en cursos',
     'depends': ['base'],
     'data': [
-        'views/curs_views.xml',
-        'views/alumne_views.xml',
-        'views/inscripcio_views.xml',
     ],
     'installable': True,
     'application': True,
