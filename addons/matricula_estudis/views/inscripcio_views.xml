@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <record id="view_matricula_inscripcio_form" model="ir.ui.view">
