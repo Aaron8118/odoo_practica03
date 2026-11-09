@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_matricula_estudis_matricula_estudis,matricula_estudis.matricula_estudis,model_matricula_estudis_matricula_estudis,base.group_user,1,1,1,1
+access_matricula_curs,access.matricula.curs,model_matricula_curs,base.group_user,1,1,1,1
+access_matricula_alumne,access.matricula.alumne,model_matricula_alumne,base.group_user,1,1,1,1
+access_matricula_inscripcio,access.matricula.inscripcio,model_matricula_inscripcio,base.group_user,1,1,1,1
