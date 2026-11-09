@@ -21,7 +21,7 @@ class Curs(models.Model):
 
     edat_minima = fields.Integer(
         string='Edat mínima',
-        required=True
+        default=0
     )
 
     capacitat_maxima = fields.Integer(
