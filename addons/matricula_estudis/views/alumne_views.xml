@@ -1,0 +1,20 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_matricula_alumne_form" model="ir.ui.view">
+        <field name="name">matricula.alumne.form</field>
+        <field name="model">matricula.alumne</field>
+        <field name="arch" type="xml">
+            <form string="Alumne">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="nif"/>
+                        <field name="edat"/>
+                    </group>
+                    <field name="inscripcio_ids"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
