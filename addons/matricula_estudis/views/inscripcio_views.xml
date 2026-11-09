@@ -1,1 +1,23 @@
 
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_matricula_inscripcio_form" model="ir.ui.view">
+        <field name="name">matricula.inscripcio.form</field>
+        <field name="model">matricula.inscripcio</field>
+        <field name="arch" type="xml">
+            <form string="Inscripcio">
+                <sheet>
+                    <group>
+                        <field name="curs_id"/>
+                        <field name="data_inscripcio"/>
+                        <field name="alumne_elegible_ids"
+                               invisible="1"/>
+                        <field name="alumne_id"
+                               domain="[('id', 'in', alumne_elegible_ids)]"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
+
