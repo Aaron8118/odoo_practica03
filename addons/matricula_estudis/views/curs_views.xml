@@ -1,0 +1,22 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_matricula_curs_form" model="ir.ui.view">
+        <field name="name">matricula.curs.form</field>
+        <field name="model">matricula.curs</field>
+        <field name="arch" type="xml">
+            <form string="Curs">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="data_inici"/>
+                        <field name="data_fi"/>
+                        <field name="edat_minima"/>
+                        <field name="capacitat_maxima"/>
+                    </group>
+                    <field name="inscripcio_ids"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
