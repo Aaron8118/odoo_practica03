@@ -1,30 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data>
-<!--
-          <record id="object0" model="rpg_personatges.rpg_personatges">
-            <field name="name">Object 0</field>
-            <field name="value">0</field>
-          </record>
 
-          <record id="object1" model="rpg_personatges.rpg_personatges">
-            <field name="name">Object 1</field>
-            <field name="value">10</field>
-          </record>
+    <!-- Classe del personatge -->
+    <record id="classe_guerrer" model="rpg.classe">
+        <field name="name">Guerrer</field>
+    </record>
 
-          <record id="object2" model="rpg_personatges.rpg_personatges">
-            <field name="name">Object 2</field>
-            <field name="value">20</field>
-          </record>
+    <!-- Personatge principal -->
+    <record id="heroi_principal" model="rpg.personatge">
 
-          <record id="object3" model="rpg_personatges.rpg_personatges">
-            <field name="name">Object 3</field>
-            <field name="value">30</field>
-          </record>
+        <field name="name">Arthas</field>
 
-          <record id="object4" model="rpg_personatges.rpg_personatges">
-            <field name="name">Object 4</field>
-            <field name="value">40</field>
-          </record>
--->
-    </data>
+        <!-- Imatge carregada en Base64 -->
+        <field name="imatge"
+               type="base64"
+               file="rpg_personatges/demo/images/hero.png"/>
+
+        <!-- Data actual menys 30 dies -->
+        <field name="data_creacio"
+               eval="(datetime.datetime.now() - datetime.timedelta(days=30)).date()"/>
+
+        <!-- Relació Many2one -->
+        <field name="classe_id" ref="classe_guerrer"/>
+
+        <!-- Relació Many2many creant habilitats -->
+        <field name="habilitat_ids"
+               eval="[
+                   (0, 0, {
+                       'name': 'Espasa',
+                       'descripcio': 'Domini de l’espasa'
+                   }),
+                   (0, 0, {
+                       'name': 'Escut',
+                       'descripcio': 'Defensa amb escut'
+                   }),
+                   (0, 0, {
+                       'name': 'Atac poderós',
+                       'descripcio': 'Atac de gran força'
+                   })
+               ]"/>
+
+    </record>
+
+    <!-- Avaluador: imatge -->
+    <record id="avaluador_img" model="rpg.avaluador">
+        <field name="nom_model">rpg.personatge</field>
+        <field name="ext_id">rpg_personatges.heroi_principal</field>
+        <field name="requisit">img</field>
+    </record>
+
+    <!-- Avaluador: referència -->
+    <record id="avaluador_ref" model="rpg.avaluador">
+        <field name="nom_model">rpg.personatge</field>
+        <field name="ext_id">rpg_personatges.heroi_principal</field>
+        <field name="requisit">ref</field>
+    </record>
+
+    <!-- Avaluador: data calculada -->
+    <record id="avaluador_dat" model="rpg.avaluador">
+        <field name="nom_model">rpg.personatge</field>
+        <field name="ext_id">rpg_personatges.heroi_principal</field>
+        <field name="requisit">dat</field>
+    </record>
+
+    <!-- Avaluador: Many2many -->
+    <record id="avaluador_m2m" model="rpg.avaluador">
+        <field name="nom_model">rpg.personatge</field>
+        <field name="ext_id">rpg_personatges.heroi_principal</field>
+        <field name="requisit">m2m</field>
+    </record>
+
 </odoo>
+
