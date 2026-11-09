@@ -21,18 +21,15 @@ class Alumne(models.Model):
         required=True
     )
 
-    _sql_constraints = [
-        (
-            'nif_unique',
-            'UNIQUE(nif)',
-            'El NIF ha de ser únic.'
-        ),
-        (
-            'edat_positiva',
-            'CHECK(edat > 0)',
-            'L edat ha de ser un número positiu.'
-        ),
-    ]
+    _nif_unique = models.Constraint(
+        'UNIQUE(nif)',
+        'El NIF ha de ser únic.'
+    )
+
+    _edat_positiva = models.Constraint(
+        'CHECK(edat > 0)',
+        'L edat ha de ser positiva.'
+    )
 
     inscripcio_ids = fields.One2many(
         'matricula.inscripcio',
