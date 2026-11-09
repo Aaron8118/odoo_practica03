@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- Classe del personatge -->
+    <!-- ================================= -->
+    <!-- CLASE DEL PERSONAJE               -->
+    <!-- ================================= -->
+
     <record id="classe_guerrer" model="rpg.classe">
         <field name="name">Guerrer</field>
     </record>
 
-    <!-- Personatge principal -->
+
+    <!-- ================================= -->
+    <!-- PERSONATGE PRINCIPAL              -->
+    <!-- ================================= -->
+
     <record id="heroi_principal" model="rpg.personatge">
 
         <field name="name">Arthas</field>
 
-        <!-- Imatge carregada en Base64 -->
+        <!-- IMATGE -->
         <field name="imatge"
                type="base64"
                file="rpg_personatges/demo/images/hero.png"/>
 
-        <!-- Data actual menys 30 dies -->
+        <!-- DATA ACTUAL MENYS 30 DIES -->
         <field name="data_creacio"
                eval="(datetime.datetime.now() - datetime.timedelta(days=30)).date()"/>
 
-        <!-- Relació Many2one -->
-        <field name="classe_id" ref="classe_guerrer"/>
+        <!-- MANY2ONE -->
+        <field name="classe_id"
+               ref="rpg_personatges.classe_guerrer"/>
 
-        <!-- Relació Many2many creant habilitats -->
+        <!-- MANY2MANY -->
         <field name="habilitat_ids"
                eval="[
                    (0, 0, {
@@ -42,28 +50,44 @@
 
     </record>
 
-    <!-- Avaluador: imatge -->
+
+    <!-- ================================= -->
+    <!-- AVALUADOR IMATGE                  -->
+    <!-- ================================= -->
+
     <record id="avaluador_img" model="rpg.avaluador">
         <field name="nom_model">rpg.personatge</field>
         <field name="ext_id">rpg_personatges.heroi_principal</field>
         <field name="requisit">img</field>
     </record>
 
-    <!-- Avaluador: referència -->
+
+    <!-- ================================= -->
+    <!-- AVALUADOR REFERENCIA              -->
+    <!-- ================================= -->
+
     <record id="avaluador_ref" model="rpg.avaluador">
         <field name="nom_model">rpg.personatge</field>
         <field name="ext_id">rpg_personatges.heroi_principal</field>
         <field name="requisit">ref</field>
     </record>
 
-    <!-- Avaluador: data calculada -->
+
+    <!-- ================================= -->
+    <!-- AVALUADOR DATA                    -->
+    <!-- ================================= -->
+
     <record id="avaluador_dat" model="rpg.avaluador">
         <field name="nom_model">rpg.personatge</field>
         <field name="ext_id">rpg_personatges.heroi_principal</field>
         <field name="requisit">dat</field>
     </record>
 
-    <!-- Avaluador: Many2many -->
+
+    <!-- ================================= -->
+    <!-- AVALUADOR MANY2MANY               -->
+    <!-- ================================= -->
+
     <record id="avaluador_m2m" model="rpg.avaluador">
         <field name="nom_model">rpg.personatge</field>
         <field name="ext_id">rpg_personatges.heroi_principal</field>
@@ -71,4 +95,3 @@
     </record>
 
 </odoo>
-
