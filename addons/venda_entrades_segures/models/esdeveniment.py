@@ -17,7 +17,8 @@ class Esdeveniment(models.Model):
 
     data_inici = fields.Datetime(
         string='Data d\'inici',
-        required=True
+        required=True,
+        default=fields.Datetime.now
     )
 
     tiquet_ids = fields.One2many(

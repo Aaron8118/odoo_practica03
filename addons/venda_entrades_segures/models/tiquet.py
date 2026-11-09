@@ -6,7 +6,7 @@ from markupsafe import escape
 class Tiquet(models.Model):
     _name = 'venda_entrades_segures.tiquet'
     _description = 'Tiquet nominal'
-
+    name = fields.Char(string="Nom del tiquet", required=True)
 
     comprador_id = fields.Many2one(
         'res.partner',
@@ -56,7 +56,8 @@ class Tiquet(models.Model):
             tiquet = record.id or 0
     
             record.codi_seguretat = (
-                f"{nom}-{esdeveniment}-{tiquet}"
+                f"{record.comprador_id.name}-"
+                f"{record.esdeveniment_id.id}"
             )
 
 
